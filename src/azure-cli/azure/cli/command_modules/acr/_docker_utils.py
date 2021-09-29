@@ -126,7 +126,8 @@ def _get_aad_token_after_challenge(cli_ctx,
 
     # this might be a cross tenant scenario, so pass subscription to get_raw_token
     subscription = get_subscription_id(cli_ctx)
-    creds, _, tenant = profile.get_raw_token(subscription=subscription)
+    resource = "https://containerregistry.azure.net"
+    creds, _, tenant = profile.get_raw_token(subscription=subscription, resource=resource)
 
     headers = {'Content-Type': 'application/x-www-form-urlencoded'}
     content = {
